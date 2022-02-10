@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>后台管理</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  </head>
+  
+  <body>
+    <div  id="app">
+        <div class="box" id="drag"></div>
+        <el-button type="primary">主要按钮</el-button>
+        <div class="dispalysd">
+            <div style="order:3">1</div>
+            <div style="order:8">2</div>
+            <div style="order:1">3</div>
+            <div style="order:4">4</div>
+            <div style="order:5">6</div>
+        </div>
+        <!--<div class="flip-in-diag-1-bl" style="margin:0 auto;background: #ccc;width: 500px;height: 500px;">
+    
+        </div> -->
+        
+        <img  src="https://img2.baidu.com/it/u=885091873,4273392218&fm=11&fmt=auto&gp=0.jpg" alt="" class="rotate-vert-right" style="width: 500px;height: 100%">
+    </div>
+  </body>
+  <style>
+    .box{
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+        cursor: move;
+        border:1px solid springgreen;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+    }
+    .dispalysd{
+        display: flex;
+    }
+    .dispalysd > div{
+        width: 40px;
+        height: 40px;
+        background: #ccc;
+    }
+
+    .rotate-vert-right {
+        -webkit-animation: rotate-vert-right 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) both;
+                animation: rotate-vert-right 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) both;
+    }
+    @-webkit-keyframes rotate-vert-right {
+        0% {
+          -webkit-transform: rotateY(0);
+                  transform: rotateY(0);
+          -webkit-transform-origin: right;
+                  transform-origin: right;
+        }
+        100% {
+          -webkit-transform: rotateY(-360deg);
+                  transform: rotateY(-360deg);
+          -webkit-transform-origin: right;
+                  transform-origin: right;
+        }
+      }
+      @keyframes rotate-vert-right {
+        0% {
+          -webkit-transform: rotateY(0);
+                  transform: rotateY(0);
+          -webkit-transform-origin: right;
+                  transform-origin: right;
+        }
+        100% {
+          -webkit-transform: rotateY(-360deg);
+                  transform: rotateY(-360deg);
+          -webkit-transform-origin: right;
+                  transform-origin: right;
+        }
+      }
+
+
+      
+  </style>
+  
+  <!-- 先引入 Vue -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!-- 引入 http-vue-loader -->
+  <script src="https://unpkg.com/http-vue-loader"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+    new Vue({
+        el: '#app',
+        data: function() {
+          return { visible: false }
+        },
+        methods:{
+            //在这里写方法
+        }
+      })
+    window.onload = function(){
+        var drag = document.getElementById('drag');
+        // //点击某物体时，用drag对象即可，move和up是全局区域，
+        // 也就是整个文档通用，应该使用document对象而不是drag对象(否则，采用drag对象时物体只能往右方或下方移动)  
+        drag.onmousedown = function(event){ //鼠标按下
+            console.log(event,'鼠标按下')
+            var event = event || window.event;  //兼容IE浏览器
+            //    鼠标点击物体那一刻相对于物体左侧边框的距离=点击时的位置相对于浏览器最左边的距离-物体左边框相对于浏览器最左边的距离
+            var diffX = event.clientX - drag.offsetLeft;
+            var diffY = event.clientY - drag.offsetTop;
+            console.log(drag.offsetLeft)
+            console.log(event.clientX )
+            console.log(diffX,diffY)
+            
+            if(typeof drag.setCapture !== 'undefined'){
+                drag.setCapture(); 
+            }
+            document.onmousemove = function(event){  //鼠标移动
+                //console.log(event,'鼠标移动')
+                var event = event || window.event;
+                var moveX = event.clientX - diffX;
+                var moveY = event.clientY - diffY;
+                console.log(moveX)
+                if(moveX < 0){
+                    moveX = 0
+                }else if(moveX > window.innerWidth - drag.offsetWidth){
+                    moveX = window.innerWidth - drag.offsetWidth
+                }
+                if(moveY < 0){
+                    moveY = 0
+                }else if(moveY > window.innerHeight - drag.offsetHeight){
+                    moveY =  window.innerHeight - drag.offsetHeight
+                }
+                drag.style.left = moveX + 'px';
+                drag.style.top = moveY + 'px'
+            }
+            document.onmouseup = function(event){  //鼠标抬起
+                console.log(event,'鼠标抬起')
+                this.onmousemove = null;
+                this.onmouseup = null;
+                //修复低版本ie bug  
+                if(typeof drag.releaseCapture!='undefined'){  
+                    drag.releaseCapture();  
+                }  
+            }
+        }
+        //存在重复的返回true 否则false
+        //var containsDuplicate = function(nums) {
+        //    for(var i=0; nums.length>i; i++){
+        //        console.log(nums[i],'i')
+        //        for(var j=i+1; nums.length>j; j++){
+        //            console.log(nums[i],nums[j])
+        //            if(nums[i]==nums[j]){
+        //                console.log(true)
+        //                return true
+        //            }
+        //        }
+        //    }
+        //    return false
+        //};
+        //containsDuplicate(['1','2','3','4','5'])
+
+
+
+
+        //只出现一次的数字  返回那个数字
+        //var containsDuplicate = function(nums) {
+        //    let obg={}
+        //    for(var i=0; nums.length>i; i++){
+        //        if(nums[i] in obg){
+        //            obg[nums[i]] ++
+        //        }else{
+        //            obg[nums[i]] =1
+        //        }
+        //    }
+        //    for(let s in obg){
+        //        if(obg[s]==1){
+        //            console.log(s)
+        //        }
+        //    }
+        //}
+        //containsDuplicate(['1','3','1','4','3'])
+
+
+        //两个数组的交集
+        //var containsDuplicate = function(nums1,nums2) {
+        //    let arr=[]
+        //    let arr1=[]
+        //    let arr2=[]
+        //    if(nums1.length==nums2.length){
+        //        arr1=nums1
+        //        arr2=nums2
+        //    }else{
+        //        arr1=nums1.length<nums2.length ? nums1 : nums2
+        //        arr2=nums1.length>nums2.length ? nums1 : nums2
+        //    }
+        //    
+        //    console.log(arr1,arr2)
+        //    debugger
+        //    for(var i=0;arr1.length>i; i++){
+        //        for(var j=0;arr2.length>j; j++){
+        //            if(arr1[i]==arr2[j]){
+        //                console.log(arr1[i])
+        //                arr.push(arr1[i])
+        //                break
+        //            }
+        //        }
+        //    }
+        //    console.log(arr)
+        //    return arr
+        //}
+        //containsDuplicate([ 3, 1, 2 ],[ 1, 1 ])
+
+
+        //数组末尾加一
+        //var containsDuplicate = function(nums) {
+        //    console.log(nums.join(""))
+        //    var s =parseInt(nums.join("")) + 1
+        //    var ss=s.toString()
+        //    var arr=ss.split("")
+        //    return arr
+        //}
+        //containsDuplicate([ 9,9 ])
+        
+        //移动零  输入: [0,1,0,3,12] 输出: [1,3,12,0,0]
+        //var containsDuplicate = function(nums) {
+        //    var num=0
+        //    for(var i=0; nums.length>i; i++){
+        //        if(nums[i]==0){
+        //            nums.splice(i--,1);
+        //            num++
+        //        }
+        //    }
+        //    for(var j=0;num>j;j++){
+        //        nums.push(0)
+        //    }
+        //    console.log(nums)
+        //    return nums
+        //}
+        //containsDuplicate([0,1,0,3,12])
+        
+
+        //两数之和  nums = [2,7,11,15], target = 9     输出：[0,1]
+        //var containsDuplicate = function(nums,target) {
+        //    debugger
+        //    for(var i=0; nums.length>i; i++){
+        //        for(var j=i+1; nums.length>j; j++){
+        //            if(nums[i]+nums[j]==target){
+        //                console.log(i,j)
+        //                return [i,j]
+        //            }
+        //        }
+        //    }
+        //}
+        //containsDuplicate([3,2,4],6)
+
+
+        //反转字符串  输入：["h","e","l","l","o"]   输出：["o","l","l","e","h"]
+        //var containsDuplicate = function(s) {
+        //    debugger
+        //    var num=s.length
+        //    var arr=[]
+        //    for(var i=0; s.length>i; i++){
+        //        arr.push(s[--num])
+        //    }
+        //    return arr
+        //}
+        //console.log(containsDuplicate(["h","e","l","l","o"]))
+
+        //循环出几个数的最多排序
+        //var containsDuplicate = function(digits) {
+        //    let arr = [];
+        //    const obj = {
+        //        2: ["a", "b", "c"],
+        //        3: ["d", "e", "f"],
+        //        4: ["g", "h", "i"],
+        //        5: ["j", "k", "l"],
+        //        6: ["m", "n", "o"],
+        //        7: ["p", "q", "r", "s"],
+        //        8: ["t", "u", "v"],
+        //        9: ["w", "x", "y", "z"],
+        //    };
+        //    let digits2arr = digits.split("");
+        //    for (let i = 0; i < digits2arr.length; i++) {
+        //        let temp = obj[digits2arr[i]];
+        //        if (arr.length == 0) {
+        //            arr.push(...temp);
+        //        } else {
+        //            let medium = [];
+        //            for (const item of arr) {
+        //                for (const item1 of temp) {
+        //                    medium.push(item + item1);
+        //                }
+        //            }
+        //            arr = medium;
+        //        }
+        //    }
+        //    console.log(arr)
+        //    return arr;
+        //};
+        //containsDuplicate('2345')
+
+        //判断是否为中文
+        //function checkName(obj) {
+        //   if(obj.length != 0) {
+        //       if(obj.match(/^[\u4e00-\u9fa5]+$/))
+        //           return true
+        //       else
+        //           return false
+        //   }
+        //}
+        //console.log(checkName('胜多负少'))
+
+
+        //js  类  原型链 判断是中文还是英文
+        //var oCar = new Object;
+        //oCar.color = "blue";
+        //oCar.doors = 4;
+        //oCar.mpg = 25;
+        //oCar.showColor = function(obj) {
+        //    if(obj.length != 0) {
+        //              if(obj.match(/^[\u4e00-\u9fa5]+$/))
+        //                  return true
+        //              else
+        //                  return false
+        //          }
+        //};
+        //console.log(oCar)
+        //console.log(oCar.showColor('iiisf'),'ppoo')
+
+       var oCars={
+           color : "blue",
+           doors : 4,
+           mpg : 25,
+           showColor(obj) {
+               if(obj.length != 0) {
+                    if(obj.match(/^[\u4e00-\u9fa5]+$/))
+                        return true
+                    else
+                        return false
+                }
+           }
+       }
+       console.log(oCars.showColor('束带结发'))
+
+       //unction createCar(sColor,iDoors,iMpg) {
+       //    var oTempCar = new Object;
+       //    oTempCar.color = sColor;
+       //    oTempCar.doors = iDoors;
+       //    oTempCar.mpg = iMpg;
+       //    oTempCar.showColor = function() {
+       //    //alert(this.color);
+       //    console.log(this.color)
+       //    };
+       //    return oTempCar;
+       //}
+       //
+       //var oCar1 = createCar("red",4,23);
+       //var oCar2 = createCar("blue",3,25);
+       //
+       //oCar1.showColor();		//输出 "red"
+       //oCar2.showColor();
+
+
+
+       //unction Car(sColor,iDoors,iMpg) {
+       //    this.color = sColor;
+       //    this.doors = iDoors;
+       //    this.mpg = iMpg;
+       //    this.showColor = function() {
+       //    console.log(this.color)
+       //    };
+       //}
+       //
+       //var oCar1 = new Car("red",4,23);
+       //var oCar2 = new Car("blue",3,25);
+       //// console.log(new Car.color,'ddd')
+       //console.log(oCar1)
+       //console.log(oCar2.showColor())
+
+       //function Ssddff(name){
+       //    this.name=name
+       //}
+       //var per= new Ssddff('张三')
+       //console.log(per)
+       //function yyy(){
+       //    console.log(this)
+       //}
+       //yyy()
+
+
+       //斐波拉契数列
+       //1,1,2,3,5,8,13,21,34,55,89...求第 n 项
+       //unction fib(n) {
+       //  let a = 0
+       //  let b = 1
+       //  let c = a + b
+       //  for (let i = 3; i < n; i++) {
+       //    a = b
+       //    b = c
+       //    c = a + b
+       //  }
+       //  return c
+       //}
+       //console.log(fib(30)) // 34
+
+       //function fib(n) {
+       //  debugger
+       //  if (n === 1 || n === 2) return n - 1
+       //  return fib(n - 1) + fib(n - 2)
+       //}
+       //console.log(fib(10)) // 34
+
+       //var cnt = 0
+
+
+
+
+
+      // function sum(n) {
+      //  if (n == 0) {
+      //    return false
+      //  }else{
+      //    console.log(n,'ooo')
+      //    let cnt = sum(n - 1)
+      //    debugger
+      //    console.log(n,'ppp')
+      //    console.log(cnt,'---')
+      //    return cnt + n
+      //  }
+      //}
+      //console.log(sum(10),'@@@@@@@@@@')
+
+
+     //function fib(n) {
+     //  
+     //  if (n === 1 || n === 2) return n - 1
+     //  console.log(n)
+     //  return fib(n - 1) + fib(n - 2)
+     //}
+     //console.log(fib(10))
+
+
+      //function climbStairs(n) {
+      //  if (n == 1) return 1
+      //  if (n == 2) return 2
+      //  return climbStairs(n - 1) + climbStairs(n - 2)
+      //}
+      //console.log(climbStairs(10))      
+
+    }
+  </script>
+</html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <iframe 
+        src="https://blog.csdn.net/m0_49016709/article/details/108009876" 
+        frameborder="0"
+        style="width:100%;height:1000px;"
+        ></iframe>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+    </div>
+    <div onclick="dian()">
+        sdf
+    </div>
+   
+</body>
+<script>
+    import {title} from "./hd.js"
+    console.log(title,'ppoo')
+    //function dian(){
+    //    import('./hd.js').then(url=>{
+    //        console.log(url,'import局部引入')
+    //    })
+    //}
+    //dian()
+
+
+
+    ///<div>
+    ///    <iframe 
+    ///    src="https://blog.csdn.net/m0_49016709/article/details/108009876" 
+    ///    frameborder="0"
+    ///    style="width:100%;height:1000px;"
+    ///    ></iframe>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+    ///</div>
+    //this的指向
+    //1、箭头函数的this，指向定义箭头函数的上下文，即指向外层的 this 。
+    //2、new 对象，this 指向新创建的对象。
+    //3、call、bind、apply修改this指向，指向这个传入的context上下文，不传指向window
+    //4、通过obj.某函数调用，this指向Obj
+    //5、在全局上下文中调用，非严格模式下，this指向windows，严格模式下指向undefined。如果不再全局，被谁调用 this 指向谁。
+    //6、匿名函数、自动执行函数的this，指向window。
+
+
+    //var list=[11,22,33,44]
+    //for(var i=0;list.length>i;i++){
+    //    var dd='pp'
+    //}
+    //console.log(dd)
+    //let arr=['222','age','张三','张三','age','李斯','222']
+    //let list=[]
+    //for(let i=0;arr.length>i;i++){
+    //    if( !list.includes(arr[i])){
+    //        list.push(arr[i])
+    //    }
+    //}
+    //console.log(list)
+
+
+    //let names = ['张三', '李四', '王二', '王二', '张三','麻子','Alice'];
+    //let nameNum={}
+    //for(i=0;i<names.length;i++){
+    //    nameNum[names[i]]=1
+    //}
+    //console.log(nameNum)
+    //console.log(Object.keys(nameNum));//(5) ["张三", "李四", "王二", "麻子", "Alice"
+    //let popp
+    //console.log(popp)
+    //let num=22
+    //let sun='pp'
+    //console.log(num - sun)
+   //Foo.prototype.belief = function(){
+　//　　console.log('量变是质变的必要准备，质变是量变积累到一定程度的必然结果！');
+　//}
+    //function ff(name,age,classd){
+    //    console.log(this)
+    //    return {
+    //        name:name,
+    //        age:age,
+    //        classd:classd
+    //    }
+    //}
+    //function Fu(name,age,classd){
+    //    console.log(this)
+    //    this.name=name
+    //    this.age=age
+    //    this.classd=classd
+    //}
+    //var p1=new Fu('网络',45,13)
+    //var p2=new Fu('八戒',45,13)
+    //console.log(p1)
+    //console.log(p2)
+    //let s1=ff('张三',13,8)
+    //let s2=ff('李四',13,8)
+    //console.log(s1)
+    //console.log(s2)
+    //console.log(name)
+    
+    
+      //  f.name = '青衣浏阳';f.age = 18; f.sex = '男'；
+    //f.say();
+   
+    
+    //Object.prototype.sss=function(){
+    //    console.log('万物皆对象')
+    //}
+    //let obj={}
+    //let arr=[]
+    //let strings='iii'
+    //let ber=true
+    //function user(){}
+    //console.dir(user)
+    //user.prototype.hide=function(){
+    //    console.log('userhide')
+    //}
+    //user.__proto__.show=function(){
+    //    console.log('usershow')
+    //}
+    //let gz=new user()
+    //console.log(gz.__proto__,'ooiiuu')
+    //gz.show()
+    //function Aperson(name,age,sex){
+    //    console.log(this,'poo')
+    //    this.name = name;
+    //    this.age = age;
+    //    this.sex = sex;
+    //}
+    //
+    //Aperson.prototype.say = function(){
+    //    console.log('定义了一个Aperson的新方法say');
+    //}
+    //Aperson()
+    //console.dir(Aperson)
+    //console.log('------')
+    //
+    //let f = new Aperson ('青衣浏阳',18,'男');
+    ////f.say()
+    //console.log(obj.constructor==obj,'对象obj')
+    //console.log(arr,'数组arr')
+    //console.log(strings.__proto__,'strings字符串')
+    //console.dir(user,'函数方法')
+    //console.log(f,'构造函数')
+//
+    //f.sss()
+    //console.log(user.prototype.__proto__==Object.prototype)
+    //console.log(user.__proto__.__proto__==Object.prototype)
+    //console.log(user.prototype.__proto__==user.__proto__.__proto__)
+    //console.log(user.prototype.__proto__==user.__proto__.__proto__,'==============')
+
+
+
+
+
+    //function auser(name,age,classd){
+    //    var aabc=name
+    //    var aacd=age
+    //    return{
+    //        aname:name,
+    //        age,
+    //        classd
+    //    }
+    //}
+    //let ads=this.auser('张三',13,4)
+//
+    //{
+    //    let addf='popopo'
+    //    var adff='poiiuy'
+    //    console.log(this,'this.块级作用域')
+    //}
+
+
+    //Object.prototype.heis=function(){
+    //    console.log('----heis----')
+    //}
+    //let arr={}
+    //console.log(arr)
+    //arr.__proto__.show=function(){
+    //    console.log('poo')
+    //}
+    //console.log(arr.__proto__==Object.prototype)
+    //arr.show()
+    //let ss=[]
+    //console.log(ss)
+    //ss.show()
+    //ss.heis()
+    //let dd=''
+    //console.log(dd)
+    //dd.show()
+    //let str='1-2-3'
+    //console.log(str.split('-'))
+    //let arr=[22,44,77,88]
+    //console.log(arr.join())
+    //function User(){
+    //    console.log(this)
+    //}
+    //User.prototype.show=function (){
+    //    console.log(this,'pooo')
+    //}
+    //let f=new User()
+    //let s=new User()
+    //f.show()
+    //s.show()
+
+
+    //let ffs = 'jackffff'
+    //function change() {
+    //   console.log(this.ffs)
+    //}
+    //change()
+
+    
+    //function Sd(){
+    //    let type=['pp','ooiuy']
+    //    let as='poo'
+    //    console.log(this,'我是外层的this')
+    //    type.forEach(()=>{
+    //        console.log(this,'我是箭头函数')
+    //    })
+    //}
+    //let bb=new Sd()
+    //bb.name='张三'
+
+
+
+    //let obj={}
+    //let arr=[]
+    //let fun=function(){}
+    //let str=''
+    //let num=998
+    //let nul=null
+    //let unde=undefined
+    //Object.prototype.uu=function(){
+    //    console.log('我是uu')
+    //}
+    //console.log(obj.__proto__==Object.prototype,'obj')
+    //console.log(arr.__proto__.__proto__==Object.prototype,'arr')
+    //console.dir(fun,'fun')
+    //console.dir(num,'num')
+    //console.dir(nul,'null')
+    //console.dir(unde,'未定义')
+//
+//
+//
+    //console.log('____________________________________')
+    //let sdf= new Promise((a,b)=>{
+    //    a('c数控刀具')
+    //}).then(data=>{
+    //    console.log(data)
+    //})
+
+    //function por(name,age){
+    //    return new Promise((reso,reje)=>{
+    //        //reso('正确')
+    //        reje('错误')
+    //        
+    //    })
+    //}
+    //por('张三','98').then(res=>{
+    //    console.log(res)
+    //},err=>{
+    //    console.log(err)
+    //}).then(a=>{
+    //    console.log('成功噢噢噢噢')
+    //},b=>{
+    //    console.log('失败')
+    //})
+    //
+    //
+    //
+    //.finally(()=>{
+    //    console.log('不管怎么样我都会执行')
+    //})
+
+
+    //new Promise((a,b)=>{
+    //    b('_____-我是失败得')
+    //}).then(res=>{
+    //    console.log(res)
+    //}).catch(err=>{
+    //    console.log(err + '错误0000')
+    //})
+    //new Promise((a,b)=>{
+    //    let fff='哦哦'
+    //    setTimeout(()=>{
+    //        a('ooii' + fff)
+    //    },1000)
+    //}).then(res=>{
+    //    console.log(res)
+    //})
+    //function shwo(){
+    //    let ddd='u'
+    //    //setTimeout(()=>{
+    //    //    let ddd="si舒服"
+    //    //},1000)
+    //    //return ddd
+    //    return new Promise((a,b)=>{
+    //        setTimeout(()=>{
+    //            let ddd="舒服"
+    //            a(ddd)
+    //        },1000)
+    //    })
+    //}
+    //console.log(shwo().then(res=>{
+    //    console.log(res)
+    //}))
+//
+//
+    //try{
+    //    console.log('我正常执行')
+    //}
+    //catch{
+    //    console.log('我出现异常了')
+    //}
+    //finally{
+    //    console.log('不管咋样我都执行')
+    //}
+
+    //var isPalindrome = function(head) {
+    //    
+    //    let len=head.length
+    //    if(len%2 ==0){
+    //        let ban=len / 2
+    //        let arr1=head.splice(0,ban)
+    //        return arr1.every((item,i,array)=>{
+    //            return array[i]==head[head.length-i-1]
+    //        })
+    //    }else{
+    //        return false
+    //    }
+    //};
+
+
+    let onWatch = (obj, setBind, getLogger) => {
+        let handler = {
+          get(target, property, receiver) {
+            getLogger(target, property)
+            return Reflect.get(target, property, receiver)
+          },
+          set(target, property, value, receiver) {
+            setBind(value, property)
+            return Reflect.set(target, property, value)
+          }
+        }
+        return new Proxy(obj, handler)
+    }
+      let obj = { a: 1 }
+      let p = onWatch(
+        obj,
+        (v, property) => {
+          console.log(`监听到属性${property}改变为${v}`)
+        },
+        (target, property) => {
+          console.log(`'${property}' = ${target[property]}`)
+        }
+      )
+      p.a = 2 // 监听到属性a改变
+      p.a // 'a' = 2
+      
+
+
+    
+</script>
+</html>

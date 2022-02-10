@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="myText">
+</body>
+<script>
+    let inputy=document.getElementById("myText")
+    inputy.addEventListener('blur',function(){
+        console.dir(inputy.value)
+    });
+    {
+        var obj={
+            name:'张三',
+            age:'13',
+            sd:[]
+        }
+        var proxys = new Proxy(obj, {
+            get: function(target, propKey) {
+                if(propKey in target){
+                    return target[propKey];
+                }else{
+                    return '没有这个玩意'
+                }
+            },
+            set:function(target, propKey,vl){
+                console.log(target, propKey,vl)
+                return target[propKey]=vl
+            }
+        });
+        proxys.age=39
+        console.log(proxys.dd)
+    }
+    {
+        var target = function () { return 'I am the target'; };
+        var handler = {
+        apply: function () {
+            return 'I am the proxy 我执行了';
+        }
+        };
+        var p = new Proxy(target, handler);
+        console.log(p())
+    }
+</script>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    //类的使用
+{
+    //类
+    // class 类 protected修饰符得使用 
+    // public 外部也可以访问和修改
+    // protected 只能类内部使用子也可以使用 外部使用会报错   
+    // private 私有得只能内部使用
+    // readonly 是只读，不可修改
+    class Pruser {
+        //constructor 被称为构造函数  会在对象调用前调用
+        constructor(n, a, c, d) {
+            //在实例方法种，this就表示当前的实例 prsd
+            this.name = n;
+            this.age = a;
+            this.sxd = c;
+            this.home = d;
+        }
+        info() {
+            console.log(this,'info');
+        }
+    }
+    const prsd = new Pruser('王二', 28, '男', '上海市c');
+    console.log(prsd.age);
+    prsd.info()
+}
+//类的继承
+{
+    //比如创建一个狗的类和猫的类
+    /**
+     * 以abstract开头的类是抽象类
+     *  抽象类和其他的类区别不大，只是不能用来创建对象
+     *  抽象类就是专门用来被继承的
+     */
+    class Animl {
+        constructor(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        sayhello() {
+            console.log(this.name, '动物在叫');
+        }
+    }
+    /*
+        此时的Animl被称为父类，dog被称为子类
+        使用继承后，子类将会拥有父类的所有方法和属性
+    **/
+    //使Dog继承Animl类
+    class Dog extends Animl {
+        run() {
+            console.log(`${this.name}在跑~`);
+        }
+    }
+    //使Cat继承Animl类
+    class Cat extends Animl {}
+    let dog = new Dog('小黑狗', 5);
+    let cat = new Cat('小花猫', 3);
+    // let ghhg=new Animl('小花猫',3)
+    // dog.sayhello()
+    // cat.sayhello()
+    // dog.run()
+    console.log(dog);
+}
+
+{
+    class MyClass {
+        named='lisi'
+        prop='prop'
+        constructor() {
+        }
+        get prop() {
+          return 'getter';
+        }
+        set prop(value) {
+          console.log('setter: '+value);
+          this.prop=value
+        }
+        fg(){
+            console.log(this,'我是this')
+        }
+    }
+      let inst = new MyClass();
+      inst.fg()
+      
+      inst.prop // 'getter
+      inst.prop = 123;// setter: 123
+}
+</script>
+</html>

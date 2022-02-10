@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document哈哈哈哈</title>
+</head>
+<body>
+
+</body>
+<script>
+
+
+function ajax(url,data){   //这个使用Promise
+    return new Promise((a,b)=>{
+        let xhr=new XMLHttpRequest();
+        xhr.open("POST",url);
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+        xhr.send(JSON.stringify(data))
+        xhr.onload=function(){
+            if(this.status==200){
+                a(JSON.parse(this.response))
+            }else{
+                console.log('加载失败')
+                b('网络错误')
+            }
+            console.log('uuu')
+        }
+    })
+}
+let ojb={
+    current: 1,
+    deptId: "1319840043991592962",
+    gradeId: "",
+    size: 10,
+    subjectId: "",
+    type: "",
+}
+ajax('http://47.99.60.33:8088/api/course/page',ojb).then(res=>{
+    console.log(res)
+    return '第二个promise'
+}).then(res=>{
+    console.log(res)
+}).catch(err=>{
+    console.log(err,'失败执行')
+}).finally(()=>{
+    console.log('无论成功失败都会执行')
+})
+    
+
+
+
+
+
+
+    //function ajax(url,callback,data){
+    //    let xhr=new XMLHttpRequest();
+    //    xhr.open("POST",url);
+    //    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+    //    xhr.send(JSON.stringify(data))
+    //    xhr.onload=function(){
+    //        if(this.status==200){
+    //            callback(JSON.parse(this.response))
+    //        }else{
+    //            console.log('加载失败')
+    //        }
+    //    }
+    //}
+    //ajax('http://47.99.60.33:8088/api/banner/home',function(res){
+    //    console.log(res,'pp')
+    //})
+    //ajax('http://47.99.60.33:8088/api/course/page',function(res){
+    //    console.log(res,'pp')
+    //},{
+    //    current: 1,
+    //    deptId: "1319840043991592962",
+    //    gradeId: "",
+    //    size: 10,
+    //    subjectId: "",
+    //    type: "",
+    //})
+</script>
+</html>

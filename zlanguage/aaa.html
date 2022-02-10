@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="./jquery.i18n.properties.js"></script>
+<script src="./Public.js"></script>
+<body>
+    <div>
+        <div data-locale="home"></div>
+        <div data-locale="name"></div>
+    </div>
+</body>
+<script type="module">
+    let chengs = window.localStorage.getItem('language')
+    loadProperties(chengs);//调用
+</script>
+</html>

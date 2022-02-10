@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符传新增得方法</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+//实例方法：includes(), startsWith(), endsWith()
+    //includes()：返回布尔值，表示是否找到了参数字符串。
+    //startsWith()：返回布尔值，表示参数字符串是否在原字符串的头部。
+    //endsWith()：返回布尔值，表示参数字符串是否在原字符串的尾部。
+    let s = 'Hello world!';
+    console.log(s.startsWith('Hello'))
+    console.log(s.endsWith('world!'))
+    console.log(s.includes('world'))
+
+//实例方法：repeat()
+    //repeat方法返回一个新字符串，表示将原字符串重复n次。
+    console.log('哈喽'.repeat(3))
+
+//实例方法：padStart()，padEnd() 
+    //字符串补全长度的功能。如果某个字符串不够指定长度，会在头部或尾部补全。padStart()用于头部补全，padEnd()用于尾部补全
+    'x'.padStart(5, 'ab') // 'ababx'
+    'x'.padStart(4, 'ab') // 'abax'
+    'x'.padEnd(5, 'ab') // 'xabab'
+    'x'.padEnd(4, 'ab') // 'xaba'
+    console.log('x'.padEnd(4, 'ab'))
+
+//实例方法：trimStart()，trimEnd()
+    //对字符串实例新增了trimStart()和trimEnd()这两个方法。它们的行为与trim()一致都是去除空格
+    {
+        const s = '  abc  ';
+        s.trim() // "abc"
+        s.trimStart() // "abc  "
+        s.trimEnd() // "  abc"
+        console.log(s.trimEnd())
+    }
+
+//实例方法：replaceAll() replace替换
+    //历史上，字符串的实例方法replace()只能替换第一个匹配。
+    'aabbcc'.replace('b', '_')
+    // 'aa_bcc'
+    'aabbcc'.replaceAll('b', '_')
+    // 'aa__cc'
+    console.log('aabbcc'.replaceAll('b', '_'))
+
+//实例方法：at()
+    //at()方法接受一个整数作为参数，返回参数指定位置的字符，支持负索引（即倒数的位置）
+    const str = 'hello';
+    str.at(1) // "e"
+    str.at(-1) // "o"
+    console.log(str.at(4))
+
+    console.log(''.__proto__,'字符串方法集合')
+</script>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数值的扩展</title>
+</head>
+<body>
+    
+</body>
+<script>
+//Number.parseInt(), Number.parseFloat(), Number( ), Number.isInteger() 扩展
+    //一、Number( ):
+        //（1）如果是Boolean值，true和false将分别转换为1和0。 
+        //（2）如果是数字值，只是简单的传入和返回。 
+        //（3）如果是null值，返回0。 
+        //（4）如果是undefined,返回NaN。 
+        //（5）如果是字符串，遵循下列规则： 
+        //var num1=Number("Hello World");  //NaN
+        //var num2=Number("");             //0
+        //var num3=Number("000011");       //11
+        //var num4=Number(true);           //1
+        //var num5=Number("num123")       //NaN
+    //二、Number.parseInt( )： 
+        //parseInt()函数可以将字符串转换成一个整数，与Number()函数相比，parseInt()函数不仅可以解析纯数字字符串，也可以解析以数字开头的部分数字字符串(非数字部分字符串在转换过程中会被去除)
+        //var num1=Number.parseInt("num123");    //NaN
+        //var num2=Number.parseInt("");          //NaN
+        //var num3=Number.parseInt("123.45")     //123
+        //var num4=Number.parseInt("101010",2)   //42
+        //var num5=Number.parseInt("123num77")     //123
+        //var num6=Number.parseInt("0xff")       //255
+    //三、Number.parseFloat( ): 
+        //parseFloat( )可以解析以数字开头的部分数字字符串(非数字部分字符串在转换过程中会被去除),parseFloat()可以将字符串转换成浮点数
+        //var num1=Number.parseFloat("1234blue");    //1234
+        //var num2=Number.parseFloat("0xA");         //0
+        //var num3=Number.parseFloat("0908.5");      //908.5
+        //var num4=Number.parseFloat("3.125e7");     //31250000
+        //var num5=Number.parseFloat("123.45.67")    //123.45
+        //var num6=Number.parseFloat("")             //NaN
+        //var num7=Number.parseFloat("num123")       //NaN
+    //四、Number.isInteger()
+        //Number.isInteger()用来判断一个数值是否为整数。 如果对数据精度的要求较高，不建议使用Number.isInteger()判断一个数值是否为整数。
+        //console.log( Number.isInteger(25)) // true
+        //console.log( Number.isInteger(25.1)) // false
+        //console.log( Number.isInteger(25.0)) // true
+        //console.log( Number.isInteger()) // false
+        //console.log( Number.isInteger(null)) // false
+        //console.log( Number.isInteger('15')) // false
+        //console.log( Number.isInteger(true)) // false
+        //Number.isInteger(3.0000000000000002) // true
+        console.dir(Number,'Number方法集合')
+//Math 对象的扩展
+    //一、Math.trunc()
+        //Math.trunc方法用于去除一个数的小数部分，返回整数部分
+        //Math.trunc(4.1) // 4
+        //Math.trunc(4.9) // 4
+        //Math.trunc(-4.1) // -4
+        //Math.trunc(-4.9) // -4
+        //Math.trunc(-0.1234) // -0
+        //Math.trunc('123.456') // 123
+        //Math.trunc(true) //1
+        //Math.trunc(false) // 0
+        //Math.trunc(null) // 0
+        //Math.trunc(NaN);      // NaN
+        //Math.trunc('foo');    // NaN
+        //Math.trunc();         // NaN
+        //Math.trunc(undefined) // NaN
+    //二、Math.sign()
+        //Math.sign方法用来判断一个数到底是正数、负数、还是零。对于非数值，会先将其转换为数值。
+        //参数为正数，返回+1；
+        //参数为负数，返回-1；
+        //参数为 0，返回0；
+        //参数为-0，返回-0;
+        //其他值，返回NaN。
+        //console.log(Math.sign(-23.445))
+        console.dir(Math,'Math方法集合')
+</script>
+</html>

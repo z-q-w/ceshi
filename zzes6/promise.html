@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let ffs=new Promise((resolve, reject)=>{
+       return resolve('ppo洗洗ffs')
+        console.log('piii')
+    })
+    console.log(ffs)
+    ffs.then(res=>{
+        console.log(res)
+    })
+
+
+
+    //function http(){
+    //    return new Promise((resolve, reject)=>{
+    //        return resolve('httppppooohttp')
+    //    })
+    //}
+    //http().then(res=>{
+    //    console.log(res)
+    //    throw new Error('test');
+    //    return 'lll'
+    //    
+    //}).then(res=>{
+    //    console.log(res)
+    //    
+    //}).catch(err=>{
+    //    console.log(err)
+    //}).finally(ally=>{
+    //    console.log('我都会执行')
+    //})
+
+    {
+        //let promise = new Promise(function(resolve, reject) {
+        //    console.log('Promise');
+        //    resolve();
+        //  });
+        //  
+        //  promise.then(function() {
+        //    console.log('resolved.');
+        //  });
+        //  
+        //  console.log('Hi!');
+    }
+    // Promise.all()
+    {
+        let mise1=new Promise((resolve,reject)=>{
+            return resolve('我是一')
+        })
+        let mise2=new Promise((resolve,reject)=>{
+            return resolve('我是二')
+        })
+        let mise3=new Promise((resolve,reject)=>{
+            return resolve('我是三')
+        })
+        Promise.all([mise1, mise2, mise3]).then(function(values) {
+            console.log(values);
+        });
+    }
+</script>
+</html>

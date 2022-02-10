@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let hd = {
+        name:'后盾人',
+        age:28,
+    }
+    //模拟vue3中实现响应式
+    let proxy = new Proxy(hd, {
+        get(obj,property){
+            //obj原数据    property key键
+            console.log('读取得时候会执行我',obj,property)
+            return obj[property]
+        },
+        set(obj, property, value){
+            //value修改得值
+            console.log('修改和增加属性的时候会执行')
+            obj[property]=value
+        },
+        deleteProperty(obj, property){
+            console.log('删除会执行')
+            return delete obj[property]
+        }
+    })
+    //proxy.name='张三'
+    hd.type='pppp'
+    hd.name='zhangsan'
+    console.log(hd)
+</script>
+</html>

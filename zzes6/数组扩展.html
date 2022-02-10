@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+//1.扩展运算符
+    //console.log(...[1, 2, 3])
+    // 1 2 3
+    //console.log(1, ...[2, 3, 4], 5)
+    // 1 2 3 4 5
+    function push(array, ...items) {
+        array.push(...items);
+        return array
+    }
+    function add(x, y) {
+        return x + y;
+    }
+    const numbers = [4, 38];
+    //console.log(add(...numbers)) // 42
+    //console.log(push([],2,3,4,5))
+    {
+        function f(v, w, x, y, ...z) {
+            console.log(v,w,x,y,z)
+        }
+        const args = [0, 1];
+        f(-1, ...args, 2, ...[3],8,6);
+    }
+    let arrddd=[2,3,4,5]
+    //console.log(Math.max(...arrddd))
+
+    const [first, ...rest] = ["foo",88,55];
+    console.log(first,rest)
+//Array.from() 
+    //Array.from方法用于将两类对象转为真正的数组 键必须为数字
+    //let formobj={
+    //    '0':'zhangsan',
+    //    '1':'14',
+    //    '3':'6',
+    //    length:4
+    //}
+    //let arrnew= Array.from(formobj)
+    //console.log('--------------------')
+    //console.log(arrnew)
+    //console.log(Array.from('hello'))
+    //console.log(...'hello')
+//Array.of()
+        //Array.of()方法用于将一组值，转换为数组。
+        {
+            Array.of(3, 11, 8) // [3,11,8]
+            Array.of(3) // [3]
+            Array.of(3).length // 1 
+            Array.of() // []
+            Array.of(undefined) // [undefined]
+            Array.of(1) // [1]
+            Array.of(1, 2) // [1, 2]
+            //console.log('=============')
+        }
+//copyWithin() 
+    //在当前数组内部，将指定位置的成员复制到其他位置（会覆盖原有成员），然后返回当前数组。使用这个方法，会修改当前数组。
+    //target（必需）：从该位置开始替换数据。如果为负值，表示倒数。
+    //start（可选）：从该位置开始读取数据，默认为 0。如果为负值，表示从末尾开始计算。
+    [1, 2, 3, 4, 5].copyWithin(0, 3) // [4, 5, 3, 4, 5]
+
+//find() 和 findIndex()
+    //find方法，用于找出第一个符合条件的数组成员
+    //findIndex方法的用法与find方法非常类似，返回第一个符合条件的数组成员的位置，如果所有成员都不符合条件，则返回-1
+       {
+            let find1= [1, 4, -5, 10].find((item)=>{
+                return item<0
+            })//-5
+            let find2= [1, 5, 10, 15].find(function(value, index, arr) {
+                return value > 9;
+            })// 10
+            console.log(find1,find2)
+
+            let index1=[1, 5, 10, 15].findIndex((value, index, arr)=> {
+                return value > 9;
+            }) // 2
+            console.log(index1)
+
+            function f(v){
+                return v > this.age;
+            }
+            let person = {name: 'John', age: 20};
+            let arr5=[10, 12, 26, 15].find(f, person);    // 26
+            console.log(arr5)
+       }
+
+//实例方法：entries()，keys() 和 values()、forEach()
+    {
+        for (let index of ['a', 'b'].keys()) {
+            console.log(index);
+        }
+        // 0
+        // 1
+        
+        for (let elem of ['a', 'b'].values()) {
+            console.log(elem);
+        }
+        // 'a'
+        // 'b'
+        
+        for (let [index, elem] of ['a', 'b'].entries()) {
+            console.log(index, elem);
+        }
+
+        [2,3,4,5,65].forEach((item,idnex)=>{
+            console.log(item,idnex)
+        })
+        // 0 "a"
+        // 1 "b" 
+    }
+//实例方法：includes() 
+    //数组里只要存在就会返回true 包括NAN
+    console.log([1, 2, 3].includes(2))     // true
+    console.log([1, 2, 3].includes(4))     // false
+    console.log([1, 2, NaN].includes(NaN)) // true
+
+    //indexOf方法有两个缺点，一是不够语义化，它的含义是找到参数值的第一个出现位置，所以要去比较是否不等于-1
+    //二是，它内部使用严格相等运算符（===）进行判断，这会导致对NaN的误判。
+    //[NaN].indexOf(NaN) // -1
+
+//实例方法：flat()，flatMap()
+    //flat()用于将嵌套的数组“拉平”，变成一维的数组。该方法返回一个新数组，对原数据没有影响。
+    console.log([1, 2, [3, 4]].flat())         // [1, 2, 3, 4]
+    console.log([1, 2, [3, [4, 5]]].flat())    // [1, 2, 3, [4, 5]]
+    console.log([1, 2, [3, [4, 5]]].flat(2) )  // [1, 2, 3, 4, 5]
+    console.log([1, [2, [3]]].flat(Infinity))  // [1, 2, 3]
+    //如果原数组有空位，flat()方法会跳过空位。
+    //[1, 2, , 4, 5].flat()// [1, 2, 4, 5]
+
+//实例方法：at()
+    //at()可以从数组的后面取值
+    {
+        const arr = [5, 12, 8, 130, 44];
+        arr.at(2) // 8
+        console.log(arr.at(-2)) // 130
+    }
+//实例方法：sort()排序
+
+console.dir(Array,'Array方法集合')
+console.log([].__proto__,'数组方法集合')
+
+
+</script>
+</html>

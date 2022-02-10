@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+    //ajax 五个步骤
+    //1.创建 XMLHttpRequest异步对象
+    //2.设置回调函数
+    //3.使用open方法与服务器建立连接
+    //4.向服务器发送数据
+    //5.在回调函数中针对不同得响应状态进行处理
+    function ajax(url,callback,data){
+        let xhr=new XMLHttpRequest();
+        xhr.open("POST",url);
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+        xhr.send(JSON.stringify(data))
+        xhr.onload=function(){
+            if(this.status==200){
+                callback(JSON.parse(this.response))
+            }else{
+                console.log('加载失败')
+            }
+        }
+    }
+    ajax('http://47.99.60.33:8088/api/banner/home',function(res){
+        console.log(res,'pp')
+    })
+    ajax('http://47.99.60.33:8088/api/course/page',function(res){
+        console.log(res,'pp')
+    },{
+        current: 1,
+        deptId: "1319840043991592962",
+        gradeId: "",
+        size: 10,
+        subjectId: "",
+        type: "",
+    })
+</script>
+</html>

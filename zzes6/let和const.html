@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //var 有变量提升，可以重复命名，不存在块级作用域
+    //let 没有变量提升，不可以重复命名，存在块级作用域
+    //let 存在暂时性死区，只要块级作用域内存在let命令，它所声明的变量就“绑定”（binding）这个区域，不再受外部的影响。
+    //const  声明一个只读的常量。一旦声明，常量的值就不能改变。
+    //const实际上保证的，并不是变量的值不得改动，而是变量指向的那个内存地址所保存的数据不得改动
+   {
+       let a='我是a'
+       var b='33'
+       const ff='ppp'
+       console.log(a)
+       console.log(ff)
+   }
+   function ass(){
+       var ao='临近空间'
+   }
+   ass()
+   //console.log(a) //报错
+   //console.log(b) // 33
+   //console.log(window)
+
+    function f1(){
+        let n = 5;
+        if(true){
+            let b = 10;
+        }
+        //console.log(b); // 5
+    }
+    f1()
+
+    for (let i = 0; i < 10; i++) {
+        // ...
+    }
+    //console.log(i); //i is not defined
+
+
+    //var af = [];
+    //for (var j = 0; j < 10; j++) {
+    //    af[j] = function () {
+    //        console.log(j);
+    //    };
+    //}
+    //af[3]()
+
+    //暂时性死区 
+    //var tmp = 123;
+    //{
+    //    tmp = 'abc';
+    //    console.log(tmp)
+    //    let tmp='po';
+    //}
+
+
+    //temp='节食减肥'
+    //let temp='oiu'
+    //console.log(temp)
+
+    let oiu=['pp','oo','ii','uu']
+    for(let i=0;oiu.length>i;i++){
+        var ffs='po'
+    }
+    console.log(ffs)
+
+    const oip={
+        lk:'ppp'
+    }
+    oip.lk='ooi'
+    
+
+</script>
+</html>

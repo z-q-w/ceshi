@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+  <div id="app">
+    <el-button @click="visible = true">Button</el-button>
+    <el-dialog :visible.sync="visible" title="Hello world">
+      <p>Try Element</p>
+    </el-dialog>
+    <el-button type="success">成功按钮</el-button>
+
+    <div style="margin-top:50px;margin-left:100px">
+      <div v-for="(item,index) in list">
+        <div v-html="item.name" v-if="item.show" @click="btn(item,index,list)"></div>
+      </div>
+    </div>
+    <div v-once>{{ceshi}}</div>
+    <div @click="go($event)">{{ceshi}}</div>
+    {{count}},{{conutcom}}
+    <div @click="cunctbtn()">
+      按钮
+    </div>
+    {{wuwu}}
+    <el-cascader
+    :options="wuwu"
+    @change="handleChange" :props=props></el-cascader>
+  </div>
+</body>
+  <!-- :props='props'-->
+  <!-- import Vue before Element -->
+  <!-- import JavaScript -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: function() {
+        return {
+          count:1,
+          visible: false,
+          list:[
+            {
+              addtime: "2021-10-29 10:05:14",
+              code: "42,",
+              date: "2021-10-29",
+              day: "29",
+              del: 0,
+              del_id: 0,
+              del_time: null,
+              id: 42,
+              month: "10",
+              name: "高级管理",
+              order: 3,
+              permiss: null,
+              pid: 0,
+              year: "2021",
+              show:true
+            },
+            {
+              addtime: "2021-10-29 10:17:26",
+              code: "42,44,",
+              date: "2021-10-29",
+              day: "29",
+              del: 0,
+              del_id: 0,
+              del_time: null,
+              id: 44,
+              month: "10",
+              name: "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总经理",
+              order: 0,
+              permiss: null,
+              pid: 42,
+              year: "2021",
+              show:true
+            },
+            {
+              addtime: "2021-10-29 10:17:54",
+              code: "42,46,",
+              date: "2021-10-29",
+              day: "29",
+              del: 0,
+              del_id: 0,
+              del_time: null,
+              id: 46,
+              month: "10",
+              name: "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;商砼砂浆生产厂长",
+              order: 0,
+              permiss: null,
+              pid: 42,
+              year: "2021",
+              show:true
+            },
+            {
+              addtime: "2021-02-08 15:32:45",
+              code: "1,",
+              date: "2021-02-08",
+              day: "08",
+              del: 0,
+              del_id: 0,
+              del_time: "2021-10-29 09:31:24",
+              id: 1,
+              month: "02",
+              name: "临化水泥",
+              order: 2,
+              permiss: "31,33,32,12,20,4,11,30,29,3,35,34,10,2,9,8,7,6,1,5",
+              pid: 0,
+              year: "2021",
+              show:true,
+            },
+            {
+              addtime: "2021-10-21 14:57:48",
+              code: "1,7,",
+              date: "2021-10-21",
+              day: "21",
+              del: 0,
+              del_id: 0,
+              del_time: "2021-10-21 16:13:32",
+              id: 7,
+              month: "10",
+              name: "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;砂浆业务经理",
+              order: 2,
+              permiss: "2,9,8,7,6",
+              pid: 1,
+              year: "2021",
+              show:true
+            },
+            {
+              addtime: "2021-10-29 09:54:13",
+              code: "1,7,25,",
+              date: "2021-10-29",
+              day: "29",
+              del: 0,
+              del_id: 0,
+              del_time: null,
+              id: 25,
+              month: "10",
+              name: "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;司磅员",
+              order: 0,
+              permiss: null,
+              pid: 7,
+              year: "2021",
+              show:true
+            },
+            {
+              addtime: "2021-10-29 09:54:57",
+              code: "1,7,27,",
+              date: "2021-10-29",
+              day: "29",
+              del: 0,
+              del_id: 0,
+              del_time: null,
+              id: 27,
+              month: "10",
+              name: "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;水泥操作工",
+              order: 0,
+              permiss: null,
+              pid: 7,
+              year: "2021",
+              show:true
+            },
+            {
+              addtime: "2021-10-29 10:05:14",
+              code: "42,",
+              date: "2021-10-29",
+              day: "29",
+              del: 0,
+              del_id: 0,
+              del_time: null,
+              id: 42,
+              month: "10",
+              name: "高级管理rrrr",
+              order: 3,
+              permiss: null,
+              pid: 0,
+              year: "2021",
+              show:true
+            },
+            {
+              addtime: "2021-10-29 10:17:26",
+              code: "42,44,",
+              date: "2021-10-29",
+              day: "29",
+              del: 0,
+              del_id: 0,
+              del_time: null,
+              id: 44,
+              month: "10",
+              name: "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总经理",
+              order: 0,
+              permiss: null,
+              pid: 42,
+              year: "2021",
+              show:true
+            },
+          ],
+          yi:[
+            {"id": 27,"pid": 0,"name": "临化水泥","code": "27,","order": 0,},
+            {"id": 28,"pid": 0,"name": "临化商砼","code": "28,","order": 0,},
+            {"id": 29,"pid": 0,"name": "临化砂浆",children:[],"code": "29,","order": 0,}
+          ],
+          er:[
+              {id: 68, department_id: 27, name: "袋装水泥", price_control: "10.00", unit: "吨"},
+              {id: 69, department_id: 27, name: "散装水泥", price_control: "10.00", unit: "吨"},
+              {id: 70, department_id: 27, name: "矿粉", price_control: "10.00", unit: "吨"},
+              {id: 71, department_id: 28, name: "普通混凝土", price_control: "10.00", unit: "立方米"},
+              {id: 72, department_id: 28, name: "抗渗混凝土P6", price_control: "10.00", unit: "立方米"},
+              {id: 73, department_id: 28, name: "细石混凝土", price_control: "10.00", unit: "立方米"},
+          ],
+          san:[ 
+            {id: 52, product_type_id: 68, name: "P.S 32.5A", price: 360, addtime: "2021-11-14 09:30:53"},
+            {id: 53, product_type_id: 68, name: "P.S 32.5B", price: 355, addtime: "2021-11-14 09:31:02"},
+            {id: 54, product_type_id: 68, name: "P.O 42.5", price: 450, addtime: "2021-11-14 09:31:26"},
+            {id: 55, product_type_id: 68, name: "P.S 32.5缓凝", price: 335, addtime: "2021-11-14 09:31:51"},
+            {id: 56, product_type_id: 68, name: "P.O 42.5缓凝", price: 430, addtime: "2021-11-14 09:32:23"},
+            {id: 132, product_type_id: 69, name: "P.S 32.5A", price: 330, addtime: "2021-11-18 15:41:48"},
+            {id: 133, product_type_id: 69, name: "P.S 32.5B", price: 325, addtime: "2021-11-18 15:42:06"},
+            {id: 134, product_type_id: 69, name: "P.O 42.5", price: 450, addtime: "2021-11-18 15:42:48"},
+          ],
+          props:{
+            label: 'name',	// 将对象中的name绑定到组件的label属性上
+            value:'name'
+          },
+          ceshi:'张三'
+        }
+      },
+      computed:{
+        wuwu(){
+          this.yi.forEach((item,index)=>{  //数据处理  处理三级联动形式
+            item.children=[]
+            this.er.filter(ter=>{
+              if(item.id==ter.department_id){
+                item.children.push(ter)
+                ter.children=[]
+                this.san.filter(val=>{
+                  if(ter.id==val.product_type_id){
+                    ter.children.push(val)
+                  }
+                })
+              }
+            })
+          })
+          console.log(this.yi)
+          return this.yi
+        },
+        conutcom(){
+          return this.count++
+        }
+      },
+      methods:{
+        cunctbtn(){
+          this.count++
+        },
+        btn(v,index,list){
+          for(let i=index + 1; list.length>i; i++){
+            if(list[i].nbsple > v.nbsple){
+              if(v.e){
+                this.list[i].show=false
+                this.list[i].e=false
+              }else{
+                this.list[i].show=true
+                this.list[i].e=true
+              }
+            }
+            if(list[i].nbsple==v.nbsple){
+              break
+            }
+          }
+          v.e=!v.e
+          console.log(this.list)
+        },
+        handleChange(value) {
+          console.log(value);
+        },
+        go(event){
+          console.log(event)
+        }
+      },
+      mounted(){
+        setTimeout(()=>{
+          this.ceshi='李四'
+        },2000)
+        this.list.forEach((item,index) =>{
+          let nbsp = item.name.match(/&nbsp/g) instanceof Array ? item.name.match(/&nbsp/g).length : 0
+          item.nbsple=nbsp
+          item.e = true
+          item.show=true
+        }),
+        console.log('ppp')
+
+
+        
+      }
+    })
+
+  </script>
+</html>
+<style>
+</style>
